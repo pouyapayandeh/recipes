@@ -1,0 +1,10 @@
+If Exisiting partion is LVM:
+1- Create partion with cfdisk
+2- use fdisk to get sda number
+3- create a physical volume using pvcreate ${sda-addr}(pvcreate /dev/sda4)
+4- get VG name using pvdisplay
+5- extend VG using vgextend ${vg-name} ${sda-addr} (vgextend ubuntu-1004 /dev/sda4)
+6- get LV name using lvdisplay
+7- extend LV using lvextend ${opt} ${LV addr} (lvextend -l+100%FREE /dev/ubuntu-1004/root)
+8- resize partition resize2fs ${LV-mapp-addr} (resize2fs /dev/mapper/ubuntu--1004-root)
+
